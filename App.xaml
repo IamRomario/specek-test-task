@@ -1,0 +1,11 @@
+﻿<Application x:Class="specek_test_task.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:specek_test_task.Views">
+    <Application.MainWindow>
+        <local:SomeView Visibility="Visible" />
+    </Application.MainWindow>
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

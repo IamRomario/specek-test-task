@@ -1,0 +1,28 @@
+﻿<Window x:Class="specek_test_task.Views.SomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:specek_test_task.Views"
+        mc:Ignorable="d"
+        Title="SomeView" Height="150" Width="300" Background="{DynamicResource Primary_Background}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/specek-test-task;component/Styles/StylesMain.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Значение:" Cursor=""/>
+            <Label Grid.Column="1" Content="{Binding Data,UpdateSourceTrigger=PropertyChanged}" d:Content="Test2"/>
+        </Grid>
+        <Button Content="Ввод значения" Command="{Binding GetDataCommand}" 
+                Width="100" Margin="0 20" Cursor=""/>
+    </StackPanel>    
+</Window>
