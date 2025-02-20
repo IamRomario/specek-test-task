@@ -20,7 +20,7 @@ namespace specek_test_task.Models
         public async Task<string> GetData()
         {            
             string data = string.Empty;
-            bool _gatIsGet = false;
+            var cts = new CancellationTokenSource();
 
             var datacontext = new EnterViewModel();
             var enterwindow = new EnterView(datacontext);
@@ -28,18 +28,20 @@ namespace specek_test_task.Models
             datacontext.SetData += (s, e) => {
                 enterwindow.Close();
                 data = e.Data;
-                _gatIsGet = true;
+                cts.Cancel();
             };
 
             enterwindow.Closed += (s, e) => {
                 data = null;
-                _gatIsGet = true;
+                cts.Cancel();
             };
 
             enterwindow.Show();
+
             await Task.Factory.StartNew(() => {
-                while (!_gatIsGet) { }
+                while (!cts.Token.IsCancellationRequested) { }
             });
+
             return data;
         }
     }
